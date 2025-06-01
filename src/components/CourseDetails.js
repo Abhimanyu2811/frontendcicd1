@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
+import config from '../config';
 
 
 const CourseDetails = () => {
@@ -23,7 +24,7 @@ const CourseDetails = () => {
       }
 
       const response = await fetch(
-        `http://localhost:7197/api/Assessments/${assessmentId}`,
+        `${config.API_BASE_URL}/api/Assessments/${assessmentId}`,
         {
           method: "DELETE",
           headers: {
@@ -59,7 +60,7 @@ const CourseDetails = () => {
 
         // Fetch course details
         const courseResponse = await fetch(
-          `http://localhost:7197/api/Courses/${courseId}`,
+          `${config.API_BASE_URL}/api/Courses/${courseId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -77,7 +78,7 @@ const CourseDetails = () => {
 
         // Fetch assessments for the course
         const assessmentsResponse = await fetch(
-          `http://localhost:7197/api/Assessments/course/${courseId}`,
+          `${config.API_BASE_URL}/api/Assessments/course/${courseId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -107,7 +108,7 @@ const CourseDetails = () => {
               `Fetching results for assessment ${assessment.assessmentId}`
             );
             const resultsResponse = await fetch(
-              `http://localhost:7197/api/Results/student/${user.userId}/assessment/${assessment.assessmentId}`,
+              `https://webappnamenewproject-byb2fqbqhha5efab.centralindia-01.azurewebsites.net/api/Results/student/${user.userId}/assessment/${assessment.assessmentId}`,
               {
                 headers: {
                   Authorization: `Bearer ${token}`,

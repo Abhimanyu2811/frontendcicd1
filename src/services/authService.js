@@ -1,5 +1,5 @@
-// Use HTTP for local development since we're dealing with self-signed certificates
-const API_URL = 'http://localhost:7197/api';
+// Use HTTPS for production
+const API_URL = 'https://webappnamenewproject-byb2fqbqhha5efab.centralindia-01.azurewebsites.net/api';
 
 // Helper function to handle API responses
 const handleResponse = async (response) => {
@@ -28,7 +28,7 @@ const handleFetchError = (error) => {
         throw new Error(
             'Unable to connect to the server. Please ensure:\n' +
             '1. The backend server is running\n' +
-            '2. You can access http://localhost:7197/api/Users in your browser\n' +
+            '2. You can access https://webappnamenewproject-byb2fqbqhha5efab.centralindia-01.azurewebsites.net/api/Users in your browser\n' +
             '3. The server is not blocked by your firewall'
         );
     }

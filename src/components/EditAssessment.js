@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import config from '../config';
 
 const EditAssessment = () => {
     const { assessmentId } = useParams();
@@ -25,7 +26,7 @@ const EditAssessment = () => {
                 throw new Error('No authentication token found');
             }
 
-            const response = await fetch(`http://localhost:7197/api/Assessments/${assessmentId}`, {
+            const response = await fetch(`${config.API_BASE_URL}/api/Assessments/${assessmentId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
@@ -88,7 +89,7 @@ const EditAssessment = () => {
 
             console.log('Submitting assessment data:', submissionData); // Debug log
 
-            const response = await fetch(`http://localhost:7197/api/Assessments/${assessmentId}`, {
+            const response = await fetch(`${config.API_BASE_URL}/api/Assessments/${assessmentId}`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,

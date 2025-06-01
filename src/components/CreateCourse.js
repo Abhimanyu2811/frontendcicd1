@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import authService, { ROLES } from '../services/authService';
+import { useAuth } from '../context/AuthContext';
+import config from '../config';
 import './Course.css';
 
 const CreateCourse = () => {
@@ -11,12 +12,20 @@ const CreateCourse = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
+        setError('');
+
         try {
-            const response = await fetch('http://localhost:7197/api/Courses', {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                throw new Error('No authentication token found');
+            }
+
+            const response = await fetch(`${config.API_BASE_URL}/api/Courses`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
-                    ...authService.getAuthHeader()
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     title,

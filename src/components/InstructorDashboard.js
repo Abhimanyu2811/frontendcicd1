@@ -35,7 +35,7 @@ const InstructorDashboard = () => {
 
             console.log('Fetching instructor courses...');
 
-            const response = await fetch('http://localhost:7197/api/Courses/instructor', {
+            const response = await fetch(`${config.API_BASE_URL}/api/Courses/instructor`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -294,8 +294,8 @@ const InstructorDashboard = () => {
             console.log('Submitting course data:', courseData);
 
             const url = editingCourse 
-                ? `http://localhost:7197/api/Courses/${editingCourse.courseId}`
-                : 'http://localhost:7197/api/Courses';
+                ? `${config.API_BASE_URL}/api/Courses/${editingCourse.courseId}`
+                : `${config.API_BASE_URL}/api/Courses`;
 
             const response = await fetch(url, {
                 method: editingCourse ? 'PUT' : 'POST',
@@ -362,7 +362,7 @@ const InstructorDashboard = () => {
                 throw new Error('No authentication token found');
             }
 
-            const response = await fetch(`http://localhost:7197/api/Courses/${courseId}`, {
+            const response = await fetch(`${config.API_BASE_URL}/api/Courses/${courseId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,

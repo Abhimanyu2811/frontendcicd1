@@ -1,5 +1,5 @@
 const config = {
-    API_BASE_URL: window.APP_CONFIG?.API_BASE_URL || process.env.REACT_APP_API_BASE_URL || 'http://localhost:7197',
+    API_BASE_URL: process.env.REACT_APP_API_URL || 'https://webappnamenewproject-byb2fqbqhha5efab.centralindia-01.azurewebsites.net',
     API_ENDPOINTS: {
         AUTH: {
             LOGIN: '/api/Auth/login',

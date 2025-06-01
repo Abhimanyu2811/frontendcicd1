@@ -25,7 +25,7 @@ const StudentDashboard = () => {
 
             console.log('Fetching assessments for course:', courseId);
 
-            const response = await fetch(`http://localhost:7197/api/Assessments/course/${courseId}`, {
+            const response = await fetch(`${config.API_BASE_URL}/api/Assessments/course/${courseId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ const StudentDashboard = () => {
 
             console.log('Fetching enrolled courses...');
 
-            const response = await fetch('http://localhost:7197/api/Courses/enrolled', {
+            const response = await fetch(`${config.API_BASE_URL}/api/Courses/enrolled`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -116,7 +116,7 @@ const StudentDashboard = () => {
             console.log('Fetching available courses...');
             console.log('Current enrolled courses data:', enrolledCoursesData);
 
-            const response = await fetch('http://localhost:7197/api/Courses/available', {
+            const response = await fetch(`${config.API_BASE_URL}/api/Courses/available`, {
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json',
@@ -318,7 +318,7 @@ const StudentDashboard = () => {
 
             console.log('Attempting to enroll in course:', courseId);
 
-            const response = await fetch(`http://localhost:7197/api/Courses/${courseId}/enroll`, {
+            const response = await fetch(`${config.API_BASE_URL}/api/Courses/${courseId}/enroll`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
