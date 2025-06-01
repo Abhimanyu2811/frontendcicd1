@@ -1,6 +1,19 @@
 {
     "navigationFallback": {
       "rewrite": "/index.html",
-      "statusCode":200
+      "exclude": ["/api/*", "/_framework/*", "/_content/*", "/*.{png,jpg,gif,svg,css,js,ico,json}"]
+    },
+    "routes": [
+      {
+        "route": "/*",
+        "serve": "/index.html",
+        "statusCode": 200
+      }
+    ],
+    "responseOverrides": {
+      "404": {
+        "rewrite": "/index.html",
+        "statusCode": 200
+      }
     }
   }
