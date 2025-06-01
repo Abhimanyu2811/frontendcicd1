@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import config from '../config';
 import './Course.css';
+import authService from '../services/authService';
 
 const CreateCourse = () => {
     const [title, setTitle] = useState('');
