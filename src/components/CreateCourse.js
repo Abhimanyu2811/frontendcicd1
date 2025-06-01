@@ -4,11 +4,12 @@ import { useAuth } from '../context/AuthContext';
 import config from '../config';
 import './Course.css';
 import authService from '../services/authService';
-
+import { useAuth } from '../context/AuthContext';
 const CreateCourse = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
